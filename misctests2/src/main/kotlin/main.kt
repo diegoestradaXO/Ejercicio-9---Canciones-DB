@@ -66,7 +66,7 @@ var wantsToContinue = true
         val strOption = readLine()!!
         val option = strOption.toInt()
         when (option) {
-            1 -> {
+            1 -> { //Buscar por nombre
                 print("Ingrese parte del nombre de la cancion que desea buscar: ")
                 val selectedSong = readLine()!!.toString()
                 transaction {
@@ -86,7 +86,7 @@ var wantsToContinue = true
                     println("Ok, listo...")
                 }
             }
-            2 -> {
+            2 -> { //Buscar por artista
                 print("Ingrese parte del nombre del artista que desea buscar: ")
                 val selectedArtist = readLine()!!.toString()
                 transaction {
@@ -106,17 +106,17 @@ var wantsToContinue = true
                     println("Ok, listo...")
                 }
             }
-            3 -> {
+            3 -> { //Imprimir favoritas
                 transaction {
                     (Album).slice(Album.song).select{ Album.favourite.eq(true)}.forEach{
                         println(it.data[4])
                     }
                 }
             }
-            4 -> {
+            4 -> { //Cerrar ciclo
                 wantsToContinue = !wantsToContinue
             }
-            else -> {
+            else -> { //Si no ingresa una opcion valida
                 println("Opcion no valida...")
             }
         }
